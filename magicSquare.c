@@ -42,18 +42,28 @@ void addNumberToArray(int number);
 bool checkSquare();
 
 //create the array with a magic square
-int board[3][3] = {{4, 9, 2}, {3, 5, 7}, {8, 1, 6}};
+int board[3][3];
 
 int main() {
-    //prints out the board
-    printBoard();
+   //variable to get the amount of tries it took to get a magic square
+    int tries = 0;
 
-    //if-else statement to check whether it is a magic square or not
-    if (checkSquare()) {
-        printf("it is a magic Square");
-    }
-    else {
-        printf("it is not a magic Square");
+    //variable to stop the program after it gets a magic square
+    bool isMagicSquare = true;
+
+    while (isMagicSquare) {
+        getRandomNumbers();
+        tries++;
+
+        if (checkSquare()) {
+            printBoard();
+            printf("\nthis is a Magic Square. It took %d tries to achieve it.", tries);
+            isMagicSquare = false;
+        } 
+        else {
+            resetBoard();
+        }
+
     }
 
 } //end main 
